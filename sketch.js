@@ -40,7 +40,7 @@ function Symbol(x, y, speed) {
     }
 
     this.rain = function() {
-        this.y += this.speed;
+        this.y = (this.y >= height) ? 0 : this.y += this.speed;
     }
 }
 

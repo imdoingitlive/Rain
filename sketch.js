@@ -20,6 +20,11 @@ function Symbol(x, y) {
             0x30A0 + round(random(0, 96));
         );
     }
+
+    this.render = function() {
+        fill(0, 255, 70);
+        text(this.value, this.x, this.y);
+    }
 }
 
 function Stream() {

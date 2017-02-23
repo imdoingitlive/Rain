@@ -1,13 +1,20 @@
+var symbol;
+
 function setup() {
     createCanvas(
         window.innerWidth,
         window.innerHeight
     );
     background(0);
+    symbol = new Symbol(
+        width / 2,
+        height / 2
+    );
+    symbol.setToRandomSymbol();
 }
 
 function draw() {
-
+    symbol.render();
 }
 
 function Symbol(x, y) {
@@ -17,7 +24,7 @@ function Symbol(x, y) {
 
     this.setToRandomSymbol = function() {
         this.value = String.fromCharCode(
-            0x30A0 + round(random(0, 96));
+            0x30A0 + round(random(0, 96))
         );
     }
 

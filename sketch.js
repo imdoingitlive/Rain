@@ -24,12 +24,13 @@ function draw() {
     });
 }
 
-function Symbol(x, y, speed) {
+function Symbol(x, y, speed, first) {
     this.x = x;
     this.y = y;
     this.value;
     this.speed = speed;
     this.switchInterval = round(random(2, 20));
+    this.first = first;
 
     this.setToRandomSymbol = function() {
         if (frameCount % this.switchInterval == 0) {
@@ -50,18 +51,23 @@ function Stream() {
     this.speed = random(5, 20);
 
     this.generateSymbols = function(x, y) {
-
+        var first = round(random(0, 4)) == 1;
         for (var i = 0; i <= this.totalSymbols; i++) {
-            symbol = new Symbol(x, y, this.speed);
+            symbol = new Symbol(x, y, this.speed, first);
             symbol.setToRandomSymbol();
             this.symbols.push(symbol);
             y -= symbolSize;
+            first = false;
         }
     }
 
     this.render = function () {
         this.symbols.forEach(function(symbol) {
-            fill(0, 255, 70);
+            if (symbol.first) {
+                fill(145, 255, 145);
+            } else {
+                fill(0, 255, 70);    
+            }
             text(symbol.value, symbol.x, symbol.y);
             symbol.rain();
             symbol.setToRandomSymbol();

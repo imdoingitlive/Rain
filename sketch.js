@@ -1,4 +1,4 @@
-var symbolSize = 60;
+var symbolSize = 30;
 var streams = [];
 
 function setup() {
@@ -7,6 +7,7 @@ function setup() {
         window.innerHeight
     );
     background(0);
+
     var x = 0;
     for (var i = 0; i <= width / symbolSize; i++) {
         var stream = new Stream();
@@ -14,6 +15,7 @@ function setup() {
         streams.push(stream);
         x += symbolSize;
     }
+
     textSize(symbolSize);
 }
 

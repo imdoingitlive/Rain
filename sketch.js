@@ -35,10 +35,10 @@ function Symbol(x, y, speed, first) {
     this.speed = speed;
     this.first = first;
 
-    this.switchInterval = round(random(2, 20));
+    this.switchInterval = round(random(10, 25));
 
     this.setToRandomSymbol = function() {
-        var charType = round(random(0, 5));
+        var charType = round(random(0, 10));
         if (frameCount % this.switchInterval == 0) {
             if (charType > 1) {
                 this.value = String.fromCharCode(
@@ -58,12 +58,17 @@ function Symbol(x, y, speed, first) {
 function Stream() {
     this.symbols = [];
     this.totalSymbols = round(random(5, 30));
-    this.speed = random(5, 20);
+    this.speed = random(5, 22);
 
     this.generateSymbols = function(x, y) {
         var first = round(random(0, 4)) == 1;
         for (var i = 0; i <= this.totalSymbols; i++) {
-            symbol = new Symbol(x, y, this.speed, first);
+            symbol = new Symbol(
+                x, 
+                y, 
+                this.speed, 
+                first
+            );
             symbol.setToRandomSymbol();
             this.symbols.push(symbol);
             y -= symbolSize;
@@ -74,7 +79,7 @@ function Stream() {
     this.render = function () {
         this.symbols.forEach(function(symbol) {
             if (symbol.first) {
-                fill(145, 255, 145);
+                fill(140, 255, 170);
             } else {
                 fill(0, 255, 70);    
             }

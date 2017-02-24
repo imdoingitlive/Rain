@@ -18,10 +18,11 @@ function setup() {
 
     textSize(symbolSize);
     textFont('Consolas');
+    textStyle(BOLD);
 }
 
 function draw() {
-    background(0, 150);
+    background(0, 190);
     streams.forEach(function(stream) {
         stream.render();
     });

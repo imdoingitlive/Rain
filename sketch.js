@@ -17,6 +17,7 @@ function setup() {
     }
 
     textSize(symbolSize);
+    textFont('Consolas');
 }
 
 function draw() {
@@ -30,15 +31,22 @@ function Symbol(x, y, speed, first) {
     this.x = x;
     this.y = y;
     this.value;
+
     this.speed = speed;
-    this.switchInterval = round(random(2, 20));
     this.first = first;
 
+    this.switchInterval = round(random(2, 20));
+
     this.setToRandomSymbol = function() {
+        var charType = round(random(0, 5));
         if (frameCount % this.switchInterval == 0) {
-            this.value = String.fromCharCode(
-                0x30A0 + round(random(0, 96))
-            );
+            if (charType > 1) {
+                this.value = String.fromCharCode(
+                    0x30A0 + round(random(0, 96))
+                );
+            } else {
+                this.value = round(random(0,9));
+            }
         }
     }
 
